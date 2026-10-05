@@ -63,12 +63,6 @@ Route::middleware('guest')->group(function () {
     Route::get('login', [AuthController::class, 'showLoginForm'])->name('login');
     Route::post('login', [AuthController::class, 'login']);
 
-    // Đăng nhập / Đăng ký qua Mạng xã hội (Google & Facebook)
-    Route::get('auth/google', [SocialAuthController::class, 'redirectToGoogle'])->name('auth.google');
-    Route::get('auth/google/callback', [SocialAuthController::class, 'handleGoogleCallback']);
-    Route::get('auth/facebook', [SocialAuthController::class, 'redirectToFacebook'])->name('auth.facebook');
-    Route::get('auth/facebook/callback', [SocialAuthController::class, 'handleFacebookCallback']);
-
     // Quên mật khẩu & Đặt lại mật khẩu
     Route::get('forgot-password', [PasswordResetLinkController::class, 'create'])->name('password.request');
     Route::post('forgot-password', [PasswordResetLinkController::class, 'store'])->name('password.email');
